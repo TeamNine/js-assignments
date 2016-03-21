@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require('assert');
+var assert = require('chai').assert;//require('assert');
 var tasks = require('../task/03-date-tasks');
 it.optional = require('../extensions/it-optional');
 
@@ -125,9 +125,10 @@ describe('03-date-tasks', function() {
                 expected: 0.4799655442984406
             }
         ].forEach(data => {
-            assert.equal(
+            assert.closeTo(
                 tasks.angleBetweenClockHands(new Date(data.date)),
                 data.expected,
+                1e-15,
                 `Incorrect result for angleBetweenClockHands(${new Date(data.date).toUTCString()}):`   
             );
         });
